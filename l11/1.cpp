@@ -29,15 +29,26 @@ void printGroups(int arr[], int n) {
         int groupId = find(arr, i);
         groups[groupId].push_back(i + 1);  // Store 1-based index
     }
-    for (int i = 0; i < n; i++) {
-        if (groups[i].empty()) continue;
 
-        cout << "{ ";
-        for (int member : groups[i]) {
-            cout << member << " ";
+    // for (int i = 0; i < n; i++) {
+    //     if (groups[i].empty()) continue;
+
+    //     cout << "{ ";
+    //     for (int member : groups[i]) {
+    //         cout << member << " ";
+    //     }
+    //     cout << "} ";
+    // }
+    
+    int gpcnt = 0;
+    int max = groups[0].size();
+    for (vector<int> group: groups) {
+        if (group.size() > 0) gpcnt++;
+        if (group.size() > max) {
+            max = group.size();
         }
-        cout << "} ";
     }
+    cout << gpcnt << " " << max;
 }
 
 int main() {
