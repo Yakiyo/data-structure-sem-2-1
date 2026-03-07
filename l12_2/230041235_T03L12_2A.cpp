@@ -1,8 +1,9 @@
+#include <math.h>
+
 #include <algorithm>
+#include <iomanip>
 #include <iostream>
 #include <vector>
-#include <math.h>
-#include <iomanip>
 using namespace std;
 
 // gcd sparse table
@@ -38,7 +39,7 @@ class SparseTable {
     }
 
     void display() const {
-            cout << "Sparse Table:" << endl;
+        cout << "Sparse Table:" << endl;
         for (auto vec : st) {
             for (auto val : vec) {
                 if (!val) continue;
@@ -73,14 +74,12 @@ int main() {
         queries.emplace_back(l, r);
     }
 
-
-
     SparseTable st(arr);
     st.ranges();
 
     st.display();
 
-    for (auto query: queries) {
+    for (auto query : queries) {
         int l = query.first;
         int r = query.second;
         cout << "GCD of range (" << l << ", " << r << ") is: " << st.query(l, r) << endl;
